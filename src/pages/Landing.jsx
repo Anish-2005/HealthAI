@@ -85,13 +85,18 @@ const Landing = ({ theme }) => {
   // Smooth scroll handler for bookmarks
   useEffect(() => {
     const handleNavClick = (e) => {
-      if (e.target.matches('a[data-scroll]')) {
-        const id = e.target.getAttribute('href').replace('#', '');
-        const el = document.getElementById(id);
-        if (el) {
-          e.preventDefault();
-          el.scrollIntoView({ behavior: 'smooth' });
+      let el = e.target;
+      while (el && el !== document) {
+        if (el.matches && el.matches('a[data-scroll]')) {
+          const id = el.getAttribute('href').replace('#', '');
+          const scrollTarget = document.getElementById(id);
+          if (scrollTarget) {
+            e.preventDefault();
+            scrollTarget.scrollIntoView({ behavior: 'smooth' });
+          }
+          break;
         }
+        el = el.parentNode;
       }
     };
     document.addEventListener('click', handleNavClick);
