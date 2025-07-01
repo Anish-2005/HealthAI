@@ -36,10 +36,14 @@ const team = [
     ],
   },
   {
-    name: "Neelotpal Dey",
-    role: "Computer Science and Data Science",
-    img: "/neel.jpg",
-    socials: [],
+    name: "Anubhab Das",
+    role: "Computer Science and Business Systems",
+    img: "/anubhab.jpg",
+     socials: [
+      { icon: Facebook, url: "#" },
+      { icon: Instagram, url: "#" },
+      { icon: Linkedin, url: "#" },
+    ],
   },
 ];
 

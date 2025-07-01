@@ -103,7 +103,11 @@ const Landing = ({ theme }) => {
       <Navbar theme={theme} />
       
       {/* Hero Section */}
-      <section id="hero" className="relative overflow-hidden py-24 px-4 flex flex-col items-center justify-center min-h-[85vh]">
+      <section
+  id="hero"
+  className="relative z-10 overflow-hidden py-24 px-4 flex flex-col items-center justify-center min-h-[85vh]"
+>
+
         {/* Animated Background Elements */}
         <motion.div 
           className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-green-100 opacity-30 blur-3xl"
@@ -186,7 +190,7 @@ const Landing = ({ theme }) => {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <motion.a 
-              href="/signup"
+              href="/home"
               className="flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-emerald-500 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 text-lg"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -196,7 +200,9 @@ const Landing = ({ theme }) => {
             
             <motion.a 
               href="/home"
-              className="flex items-center justify-center gap-2 bg-white text-green-700 border border-green-300 px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 text-lg"
+              className={`flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 text-lg border ${theme === 'dark' 
+                ? 'bg-gray-800 text-green-200 border-green-700 hover:bg-gray-700' 
+                : 'bg-white text-green-700 border-green-300 hover:bg-green-50'}`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -540,7 +546,7 @@ const Landing = ({ theme }) => {
               transition={{ duration: 0.5, delay: 0.4 }}
             >
               <motion.a 
-                href="/signup"
+                href="/home"
                 className={`px-8 py-4 rounded-xl font-bold shadow-lg transition-all ${theme === 'dark' ? 'bg-green-800 text-green-100 hover:bg-green-700' : 'bg-white text-green-700 hover:bg-green-50'}`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

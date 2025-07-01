@@ -10,6 +10,7 @@ import Partner from "./pages/Partner";
 import Help from "./pages/Help";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   // Track theme for live updates
@@ -35,13 +36,13 @@ function App() {
             <>
               <Routes>
                 <Route path="/" element={<Landing theme={theme} />} />
-                <Route path="/home" element={<Home theme={theme} />} />
-                <Route path="/team" element={<Team theme={theme} />} />
-                <Route path="/about" element={<About theme={theme} />} />
-                <Route path="/emergency" element={<Emergency theme={theme} />} />
-                <Route path="/advice" element={<Advice theme={theme} />} />
-                <Route path="/partner" element={<Partner theme={theme} />} />
-                <Route path="/help" element={<Help theme={theme} />} />
+                <Route path="/home" element={<ProtectedRoute><Home theme={theme} /></ProtectedRoute>} />
+                <Route path="/team" element={<ProtectedRoute><Team theme={theme} /></ProtectedRoute>} />
+                <Route path="/about" element={<ProtectedRoute><About theme={theme} /></ProtectedRoute>} />
+                <Route path="/emergency" element={<ProtectedRoute><Emergency theme={theme} /></ProtectedRoute>} />
+                <Route path="/advice" element={<ProtectedRoute><Advice theme={theme} /></ProtectedRoute>} />
+                <Route path="/partner" element={<ProtectedRoute><Partner theme={theme} /></ProtectedRoute>} />
+                <Route path="/help" element={<ProtectedRoute><Help theme={theme} /></ProtectedRoute>} />
                 <Route path="/login" element={<Login theme={theme} />} />
                 <Route path="/signup" element={<Signup theme={theme} />} />
               </Routes>
