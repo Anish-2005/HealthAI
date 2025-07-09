@@ -304,7 +304,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Contact & Support
 
 **Anish Seth**
-- 📧 Email: anish.seth@example.com
+- 📧 Email: anishseth0510@gmail.com
 - 💼 LinkedIn: [Anish Seth](https://www.linkedin.com/in/anish-seth-202200290/)
 - 📸 Instagram: [@anish_seth.ai](https://www.instagram.com/anish_seth.ai/)
 
