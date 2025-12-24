@@ -11,6 +11,8 @@ import Help from "./pages/Help";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Doctors from "./pages/Doctors";
+import BookEmergency from "./pages/BookEmergency";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -45,6 +47,8 @@ function App() {
                 <Route path="/partner" element={<ProtectedRoute><Partner theme={theme} /></ProtectedRoute>} />
                 <Route path="/help" element={<ProtectedRoute><Help theme={theme} /></ProtectedRoute>} />
                 <Route path="/contact" element={<ProtectedRoute><Contact theme={theme} /></ProtectedRoute>} />
+                <Route path="/doctors" element={<ProtectedRoute><Doctors theme={theme} /></ProtectedRoute>} />
+                <Route path="/bookemergency" element={<ProtectedRoute><BookEmergency theme={theme} /></ProtectedRoute>} />
                 <Route path="/login" element={<Login theme={theme} />} />
                 <Route path="/signup" element={<Signup theme={theme} />} />
               </Routes>
