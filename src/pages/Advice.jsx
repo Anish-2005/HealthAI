@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/LandingFooter";
 import { motion } from "framer-motion";
-import { Bot, Sparkles, History } from "lucide-react";
+import { Bot, Sparkles, History, Trash } from "lucide-react";
 import { db, auth } from "../firebase";
-import { addDoc, collection, query, where, orderBy, onSnapshot } from "firebase/firestore";
+import { addDoc, collection, query, where, orderBy, onSnapshot, deleteDoc, doc } from "firebase/firestore";
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 export default function Advice({ theme }) {
@@ -13,6 +13,27 @@ export default function Advice({ theme }) {
   const [loading, setLoading] = useState(false);
   const [advice, setAdvice] = useState("");
   const [pastAdvices, setPastAdvices] = useState([]);
+
+  const deleteAdvice = async (id) => {
+    try {
+      await deleteDoc(doc(db, 'advice_requests', id));
+    } catch (error) {
+      console.error("Error deleting advice: ", error);
+      alert("Failed to delete advice. Please try again.");
+    }
+  };
+
+  const clearAllHistory = async () => {
+    if (window.confirm("Are you sure you want to delete all your advice history? This action cannot be undone.")) {
+      try {
+        const deletePromises = pastAdvices.map(advice => deleteDoc(doc(db, 'advice_requests', advice.id)));
+        await Promise.all(deletePromises);
+      } catch (error) {
+        console.error("Error clearing history: ", error);
+        alert("Failed to clear history. Please try again.");
+      }
+    }
+  };
 
   useEffect(() => {
     if (user) {
@@ -257,8 +278,20 @@ return (
               transition={{ duration: 0.5 }}
               className="mx-6 md:mx-14 mb-10"
             >
-              <div className="flex items-center gap-2 mb-6 text-green-700 dark:text-green-300 font-semibold text-xl">
-                <History size={24} /> Past Advices
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-2 text-green-700 dark:text-green-300 font-semibold text-xl">
+                  <History size={24} /> Past Advices
+                </div>
+                <button
+                  onClick={clearAllHistory}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    theme === 'dark'
+                      ? 'bg-red-900 text-red-200 hover:bg-red-800'
+                      : 'bg-red-100 text-red-700 hover:bg-red-200'
+                  }`}
+                >
+                  Clear All History
+                </button>
               </div>
               <div className="space-y-4">
                 {pastAdvices.map((item) => (
@@ -267,7 +300,7 @@ return (
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3 }}
-                    className={`p-6 rounded-2xl shadow-lg border ${
+                    className={`p-6 rounded-2xl shadow-lg border relative ${
                       theme === 'dark'
                         ? 'bg-gray-900 border-green-800 text-green-200'
                         : 'bg-green-50 border-green-300 text-green-900'
@@ -277,8 +310,21 @@ return (
                       <div className="font-semibold text-green-700 dark:text-green-300">
                         Query: {item.query}
                       </div>
-                      <div className="text-sm opacity-70">
-                        {item.timestamp?.toDate?.()?.toLocaleDateString() || 'Recent'}
+                      <div className="flex items-center gap-2">
+                        <div className="text-sm opacity-70">
+                          {item.timestamp?.toDate?.()?.toLocaleDateString() || 'Recent'}
+                        </div>
+                        <button
+                          onClick={() => deleteAdvice(item.id)}
+                          className={`p-1 rounded transition-colors ${
+                            theme === 'dark'
+                              ? 'text-red-400 hover:bg-red-900'
+                              : 'text-red-600 hover:bg-red-100'
+                          }`}
+                          title="Delete this advice"
+                        >
+                          <Trash size={16} />
+                        </button>
                       </div>
                     </div>
                     <div className="text-sm leading-relaxed">{item.response}</div>
