@@ -9,7 +9,7 @@ export default function Help({ theme }) {
 
   return (
     <div
-      className={`min-h-screen flex flex-col transition-colors duration-500 overflow-x-hidden ${
+      className={`h-screen flex flex-col transition-colors duration-500 overflow-hidden ${
         isDark
           ? "bg-gray-900 text-white"
           : "bg-gradient-to-br from-[#E4F2CE] to-white text-[#2E312A]"

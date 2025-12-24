@@ -9,13 +9,19 @@ export default function Advice({ theme }) {
   const [loading, setLoading] = useState(false);
   const [advice, setAdvice] = useState("");
 
-  // Placeholder for AI advice fetch
-  const handleAdvice = () => {
+  // AI advice fetch using Puter API
+  const handleAdvice = async () => {
+    if (!input.trim()) return;
     setLoading(true);
-    setTimeout(() => {
-      setAdvice("Stay hydrated, eat a balanced diet, and consult a doctor if symptoms persist. (AI placeholder)");
-      setLoading(false);
-    }, 1200);
+    try {
+      const response = await puter.ai.chat(`Provide brief health advice for the following symptoms or concern: ${input}. Give practical, safe advice in 2-3 sentences and recommend consulting a doctor if needed. Keep it under 150 words.`, {
+        model: 'gemini-3-pro-preview'
+      });
+      setAdvice(response.toString());
+    } catch (error) {
+      setAdvice("Sorry, unable to get advice right now. Please try again later.");
+    }
+    setLoading(false);
   };
 
 return (
