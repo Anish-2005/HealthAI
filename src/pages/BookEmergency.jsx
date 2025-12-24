@@ -93,7 +93,7 @@ export default function BookEmergency({ theme }) {
                 size={36}
                 className="text-red-600 dark:text-red-300 animate-pulse"
               />
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-500">
+              <h1 className="py-2 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-500">
                 Book Emergency Consultation
               </h1>
             </div>
