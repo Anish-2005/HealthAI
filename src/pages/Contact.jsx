@@ -3,6 +3,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/LandingFooter";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, CheckCircle } from "lucide-react";
+import { db } from "../firebase";
+import { addDoc, collection } from "firebase/firestore";
 
 export default function Contact({ theme }) {
   const isDark = theme === "dark";
@@ -27,15 +29,20 @@ export default function Contact({ theme }) {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    try {
+      await addDoc(collection(db, 'contacts'), {
+        ...formData,
+        timestamp: new Date()
+      });
+      setIsSubmitted(true);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      setTimeout(() => setIsSubmitted(false), 5000);
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      alert("Failed to send message. Please try again.");
+    }
     
     setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    
-    // Reset success message after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000);
   };
 
   return (

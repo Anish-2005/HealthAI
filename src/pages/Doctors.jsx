@@ -3,6 +3,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/LandingFooter";
 import { motion } from "framer-motion";
 import { Stethoscope, Calendar, Clock, User } from "lucide-react";
+import { db } from "../firebase";
+import { addDoc, collection } from "firebase/firestore";
 
 export default function Doctors({ theme }) {
   const isDark = theme === "dark";
@@ -41,16 +43,22 @@ export default function Doctors({ theme }) {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate booking
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    try {
+      await addDoc(collection(db, 'consultations'), {
+        ...formData,
+        timestamp: new Date()
+      });
+      setIsSubmitted(true);
+      setFormData({
+        name: '', email: '', phone: '', specialty: '', date: '', time: '', symptoms: ''
+      });
+      setTimeout(() => setIsSubmitted(false), 5000);
+    } catch (error) {
+      console.error("Error booking consultation: ", error);
+      alert("Failed to book consultation. Please try again.");
+    }
     
     setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({
-      name: '', email: '', phone: '', specialty: '', date: '', time: '', symptoms: ''
-    });
-    
-    setTimeout(() => setIsSubmitted(false), 5000);
   };
 
   return (

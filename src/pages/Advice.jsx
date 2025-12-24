@@ -3,6 +3,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/LandingFooter";
 import { motion } from "framer-motion";
 import { Bot, Sparkles } from "lucide-react";
+import { db } from "../firebase";
+import { addDoc, collection } from "firebase/firestore";
 
 export default function Advice({ theme }) {
   const [input, setInput] = useState("");
@@ -17,9 +19,18 @@ export default function Advice({ theme }) {
       const response = await puter.ai.chat(`Provide brief health advice for the following symptoms or concern: ${input}. Give practical, safe advice in 2-3 sentences and recommend consulting a doctor if needed. Keep it under 150 words.`, {
         model: 'gemini-3-pro-preview'
       });
-      setAdvice(response.toString());
+      const adviceText = response.toString();
+      setAdvice(adviceText);
+      
+      // Save to database
+      await addDoc(collection(db, 'advice_requests'), {
+        query: input,
+        response: adviceText,
+        timestamp: new Date()
+      });
     } catch (error) {
       setAdvice("Sorry, unable to get advice right now. Please try again later.");
+      console.error("Error getting advice: ", error);
     }
     setLoading(false);
   };

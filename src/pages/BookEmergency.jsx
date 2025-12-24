@@ -3,6 +3,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/LandingFooter";
 import { motion } from "framer-motion";
 import { AlertTriangle, Ambulance, Phone, MapPin } from "lucide-react";
+import { db } from "../firebase";
+import { addDoc, collection } from "firebase/firestore";
 
 export default function BookEmergency({ theme }) {
   const isDark = theme === "dark";
@@ -39,16 +41,22 @@ export default function BookEmergency({ theme }) {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate emergency booking
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    try {
+      await addDoc(collection(db, 'emergency_requests'), {
+        ...formData,
+        timestamp: new Date()
+      });
+      setIsSubmitted(true);
+      setFormData({
+        name: '', phone: '', location: '', emergencyType: '', description: ''
+      });
+      setTimeout(() => setIsSubmitted(false), 5000);
+    } catch (error) {
+      console.error("Error requesting emergency consultation: ", error);
+      alert("Failed to request emergency consultation. Please try again.");
+    }
     
     setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({
-      name: '', phone: '', location: '', emergencyType: '', description: ''
-    });
-    
-    setTimeout(() => setIsSubmitted(false), 5000);
   };
 
   return (
