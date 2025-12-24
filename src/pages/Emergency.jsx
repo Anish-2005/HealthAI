@@ -9,7 +9,7 @@ export default function Emergency({ theme }) {
 
   return (
     <div
-      className={`h-screen flex flex-col transition-colors duration-500 overflow-hidden ${
+      className={`min-h-screen flex flex-col transition-colors duration-500 overflow-x-hidden ${
         isDark
           ? "bg-gray-900 text-white"
           : "bg-gradient-to-br from-[#E4F2CE] to-white text-[#2E312A]"
@@ -32,7 +32,7 @@ export default function Emergency({ theme }) {
         />
 
         {/* Content Section */}
-        <section className="my-48 py-16 px-4 sm:px-6 md:px-8 relative z-10 flex-1 flex flex-col justify-center items-center text-center max-w-2xl mx-auto overflow-x-hidden">
+        <section className="my-8 py-32 px-4 sm:px-6 md:px-8 relative z-10 flex-1 flex flex-col justify-center items-center text-center max-w-2xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

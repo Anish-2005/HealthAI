@@ -101,7 +101,7 @@ const Home = ({ theme }) => {
       <Navbar theme={theme} />
       
       {/* Enhanced Hero Section */}
-      <section id="hero" className="mt-12 relative overflow-hidden pt-16 pb-24 px-4 flex flex-col items-center justify-center min-h-[90vh]">
+      <section id="hero" className="relative overflow-hidden pt-16 pb-24 px-4 flex flex-col items-center justify-center min-h-[90vh]">
         {/* Animated Background Elements */}
         <motion.div 
           className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-green-100 opacity-30 blur-3xl dark:bg-green-900 dark:opacity-20"
@@ -146,7 +146,7 @@ const Home = ({ theme }) => {
             {/* Quick Actions */}
             <motion.div className="mt-12 flex flex-wrap justify-center md:justify-start gap-4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.8 }}>
               <motion.a 
-                href="/aiadvice" 
+                href="/advice" 
                 className="flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-emerald-500 text-white px-6 py-3 rounded-xl font-medium shadow hover:shadow-md transition-all hover:-translate-y-0.5"
                 whileHover={{ scale: 1.05 }} 
                 whileTap={{ scale: 0.95 }}
