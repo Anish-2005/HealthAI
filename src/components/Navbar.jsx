@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { 
   Home, Stethoscope, ShieldAlert, HelpCircle, 
   Info, Handshake, LogOut, Menu, X,
-  Moon, Sun, ArrowRight, Bot
+  Moon, Sun, ArrowRight, Bot, Mail
 } from "lucide-react";
 
 const navLinks = [
@@ -12,6 +12,7 @@ const navLinks = [
   { name: "AI Health Advice", path: "/advice", icon: <Stethoscope size={18} /> },
   { name: "Emergency Support", path: "/emergency", icon: <ShieldAlert size={18} /> },
   { name: "Help", path: "/help", icon: <HelpCircle size={18} /> },
+  { name: "Contact", path: "/contact", icon: <Mail size={18} /> },
   { name: "About", path: "/about", icon: <Info size={18} /> },
   { name: "Partner", path: "/partner", icon: <Handshake size={18} /> },
 ];

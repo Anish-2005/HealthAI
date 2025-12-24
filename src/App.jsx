@@ -8,6 +8,7 @@ import Emergency from "./pages/Emergency";
 import Advice from "./pages/Advice";
 import Partner from "./pages/Partner";
 import Help from "./pages/Help";
+import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -43,6 +44,7 @@ function App() {
                 <Route path="/advice" element={<ProtectedRoute><Advice theme={theme} /></ProtectedRoute>} />
                 <Route path="/partner" element={<ProtectedRoute><Partner theme={theme} /></ProtectedRoute>} />
                 <Route path="/help" element={<ProtectedRoute><Help theme={theme} /></ProtectedRoute>} />
+                <Route path="/contact" element={<ProtectedRoute><Contact theme={theme} /></ProtectedRoute>} />
                 <Route path="/login" element={<Login theme={theme} />} />
                 <Route path="/signup" element={<Signup theme={theme} />} />
               </Routes>

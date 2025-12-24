@@ -121,7 +121,7 @@ const Home = ({ theme }) => {
               <motion.h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 tracking-tight" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
                 Your <span className="inline-block bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-emerald-500">AI Health Assistant</span>
               </motion.h1>
-              <motion.p className="text-xl md:text-2xl max-w-2xl mb-8 font-medium text-gray-700 dark:text-gray-200" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}>
+              <motion.p className="text-xl md:text-2xl max-w-2xl mb-8 font-medium text-gray-700 dark:text-gray-700" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}>
                 Get instant, personalized health advice based on your symptoms and medical history.
               </motion.p>
               
@@ -237,15 +237,9 @@ const Home = ({ theme }) => {
             <motion.a href="/doctors" className="flex-1 bg-gradient-to-r from-green-500 to-emerald-400 text-white px-8 py-6 rounded-2xl font-bold text-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center justify-center gap-3" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Stethoscope size={28} /> Contact a Doctor Immediately
             </motion.a>
-            <motion.a href="/bookemergency" className="flex-1 bg-white text-green-700 border border-green-300 px-8 py-6 rounded-2xl font-bold text-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center justify-center gap-3 dark:bg-gray-800 dark:text-green-200" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Calendar size={28} className={theme === 'dark' ? 'text-green-200' : 'text-green-600'} />
-              <span className={`${theme === 'dark' ? '' : 'text-green-700'}`}>Book an Emergency Consultation</span>
-              <style>{`
-                .bg-white.text-green-700 {
-                  background-color: #fff !important;
-                  color: #15803d !important;
-                }
-              `}</style>
+            <motion.a href="/bookemergency" className="flex-1 bg-white text-white border border-green-300 px-8 py-6 rounded-2xl font-bold text-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center justify-center gap-3 dark:bg-gradient-to-r dark:from-green-600 dark:to-emerald-500" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Calendar size={28} className="text-white" />
+              <span>Book an Emergency Consultation</span>
             </motion.a>
           </div>
         </div>
@@ -261,22 +255,22 @@ const Home = ({ theme }) => {
             <div className="space-y-8">
               <motion.div className={`p-6 rounded-2xl shadow-lg ${theme === 'dark' ? 'bg-gray-900' : 'bg-green-50 border border-green-200'}`} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
                 <h3 className="text-2xl font-bold mb-2">Step 1: Enter Symptoms</h3>
-                <h4 className="text-lg text-gray-600 dark:text-gray-300">Describe the health issue</h4>
+                <h4 className="text-lg text-gray-700 dark:text-gray-900">Describe the health issue</h4>
               </motion.div>
               <motion.div className={`p-6 rounded-2xl shadow-lg ${theme === 'dark' ? 'bg-gray-900' : 'bg-green-50 border border-green-200'}`} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2 }}>
-                <h3 className="text-2xl font-bold mb-4">Step 2: AI Classifies the Problem</h3>
+                <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-900">Step 2: AI Classifies the Problem</h3>
                 <div className="space-y-4">
                   <div className={`p-4 rounded-xl shadow ${theme === 'dark' ? 'bg-gray-800 border border-gray-700' : 'bg-green-50 border border-green-200'}`}>
-                    <h4 className="font-semibold text-green-700 dark:text-green-300">Case 1:</h4>
-                    <p className="text-gray-700 dark:text-gray-300">If the health problem is mild, you get a quick AI diagnosis with immediate medical and dietary advice.</p>
+                    <h4 className="font-semibold text-green-700 dark:text-green-400">Case 1:</h4>
+                    <p className="text-gray-800 dark:text-gray-900">If the health problem is mild, you get a quick AI diagnosis with immediate medical and dietary advice.</p>
                   </div>
                   <div className={`p-4 rounded-xl shadow ${theme === 'dark' ? 'bg-gray-800 border border-gray-700' : 'bg-green-50 border border-green-200'}`}>
-                    <h4 className="font-semibold text-green-700 dark:text-green-300">Case 2:</h4>
-                    <p className="text-gray-700 dark:text-gray-300">If the problem is moderate, you'll get recommended doctors, ratings, contacts, and can book an appointment.</p>
+                    <h4 className="font-semibold text-green-700 dark:text-green-400">Case 2:</h4>
+                    <p className="text-gray-800 dark:text-gray-900">If the problem is moderate, you'll get recommended doctors, ratings, contacts, and can book an appointment.</p>
                   </div>
                   <div className={`p-4 rounded-xl shadow ${theme === 'dark' ? 'bg-gray-800 border border-gray-700' : 'bg-green-50 border border-green-200'}`}>
-                    <h4 className="font-semibold text-green-700 dark:text-green-300">Case 3:</h4>
-                    <p className="text-gray-700 dark:text-gray-300">If the problem is severe, you'll get nearest hospitals and can book an ambulance for immediate action.</p>
+                    <h4 className="font-semibold text-green-700 dark:text-green-400">Case 3:</h4>
+                    <p className="text-gray-800 dark:text-gray-900">If the problem is severe, you'll get nearest hospitals and can book an ambulance for immediate action.</p>
                   </div>
                 </div>
               </motion.div>
@@ -325,11 +319,11 @@ const Home = ({ theme }) => {
             <motion.div className={`rounded-2xl shadow-xl p-8 flex flex-col items-center ${theme === 'dark' ? 'bg-gray-800' : 'bg-green-50 border border-green-200'}`} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
               <h3 className="text-2xl font-bold mb-2">Basic</h3>
               <h2 className="text-3xl font-extrabold text-green-700 dark:text-green-400 mb-2">₹200/year</h2>
-              <p className="mb-4 text-gray-700 dark:text-gray-300">For the day to day need and precaution.</p>
+              <p className="mb-4 text-gray-700 dark:text-gray-900">For the day to day need and precaution.</p>
               <button className="sub px-6 py-3 rounded-xl bg-gradient-to-r from-green-600 to-emerald-500 text-white font-bold mb-4 border border-green-400 shadow-lg hover:shadow-xl transition-all">Subscribe</button>
               <ul className="space-y-2 text-left">
-                <li className="flex items-center gap-2 text-gray-700 dark:text-gray-300"><Check className="text-green-500" size={20} /> Limited AI Health Advices</li>
-                <li className="flex items-center gap-2 text-gray-700 dark:text-gray-300"><Check className="text-green-500" size={20} /> Limited Discounts on Doctors, Booking Ambulances and Hospital Charges.</li>
+                <li className="flex items-center gap-2 text-gray-700 dark:text-gray-900"><Check className="text-green-500" size={20} /> Limited AI Health Advices</li>
+                <li className="flex items-center gap-2 text-gray-700 dark:text-gray-900"><Check className="text-green-500" size={20} /> Limited Discounts on Doctors, Booking Ambulances and Hospital Charges.</li>
               </ul>
             </motion.div>
             {/* Premium Plan */}
@@ -337,7 +331,7 @@ const Home = ({ theme }) => {
               <h3 className="text-2xl font-bold mb-2">Premium</h3>
               <h2 className="text-3xl font-extrabold mb-2">₹1000/year</h2>
               <p className="mb-4">For severe health patients requiring 24/7 support.</p>
-              <button className="sub px-6 py-3 rounded-xl bg-white text-green-700 font-bold mb-4">Subscribe</button>
+              <button className="sub px-6 py-3 rounded-xl bg-gradient-to-r from-green-700 to-emerald-600 text-white font-bold mb-4 border border-green-500 shadow-lg hover:shadow-xl transition-all">Subscribe</button>
               <ul className="space-y-2 text-left">
                 <li className="flex items-center gap-2"><Check className="text-green-800" size={20} /> Unlimited AI Health Advices</li>
                 <li className="flex items-center gap-2"><Check className="text-green-800" size={20} /> Minimum 20% on Doctors, Booking Ambulances and Hospital Charges.</li>
@@ -354,7 +348,7 @@ const Home = ({ theme }) => {
           <motion.h2 className="text-3xl md:text-4xl font-bold mb-6" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             Partner with us
           </motion.h2>
-          <motion.p className="mb-8 text-lg text-gray-700 dark:text-gray-300" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}>
+          <motion.p className="mb-8 text-lg text-gray-700 dark:text-gray-700" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}>
             Join us in revolutionizing the healthcare industry through the power of artificial intelligence. By partnering with us, hospitals, clinics, doctors, and pharmaceutical companies can leverage cutting-edge AI technology to enhance patient care, streamline operations, and improve diagnostic accuracy.
           </motion.p>
           <motion.a href="/contact" className="px-8 py-4 rounded-xl font-bold shadow-lg transition-all bg-gradient-to-r from-green-600 to-emerald-500 text-white hover:from-green-700 hover:to-emerald-600" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -505,10 +499,10 @@ const Home = ({ theme }) => {
                 </div>
                 <div className="flex mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className={`${i < testimonials[currentTestimonial].rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'} mx-1`} size={20} />
+                    <Star key={i} className={`${i < testimonials[currentTestimonial].rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-900'} mx-1`} size={20} />
                   ))}
                 </div>
-                <blockquote className="text-xl italic mb-6 max-w-2xl text-gray-800 dark:text-gray-200">"{testimonials[currentTestimonial].content}"</blockquote>
+                <blockquote className="text-xl italic mb-6 max-w-2xl text-gray-800 dark:text-gray-900">"{testimonials[currentTestimonial].content}"</blockquote>
                 <div>
                   <div className="font-bold text-lg">{testimonials[currentTestimonial].name}</div>
                   <div className="text-green-600 dark:text-green-400">{testimonials[currentTestimonial].role}</div>
